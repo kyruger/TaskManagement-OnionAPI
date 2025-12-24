@@ -6,6 +6,7 @@ using TaskManagement.Application.DTOs.Tasks;
 
 using TaskManagent.Domain.Enums;
 using TaskManagent.Domain.Entities.Concrete;
+using TaskManagement.Application.Interfaces;
 
 namespace TaskManagement.API.Controllers
 {
@@ -13,110 +14,43 @@ namespace TaskManagement.API.Controllers
     [ApiController]
     public class TasksController : ControllerBase
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly ITaskService _taskService;
 
-        public TasksController(IUnitOfWork unitOfWork)
+        public TasksController(ITaskService taskService)
         {
-            _unitOfWork = unitOfWork;
+            _taskService = taskService;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var tasks = await _unitOfWork.Tasks.GetAllAsync();
-
-            var result= tasks
-                .Where(t=> !t.IsDeleted)
-                .Select(t => new TaskDTO
-                {
-                    Id = t.Id,
-                    Title = t.Title,
-                    Description = t.Description,
-                    Status = t.Status,
-                    Priority = t.Priority,
-                    DueDate = t.DueDate
-                });
-
-
-            return Ok(result);
+           return Ok( await _taskService.GetAllAsync());
         }
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var task = await _unitOfWork.Tasks.GetByIdAsync(id);
+            var result = await _taskService.GetByIdAsync(id);
 
-            if(task == null || task.IsDeleted)
-            {
-                return NotFound();
-            }
-
-            return Ok(new TaskDTO
-            {
-                Id = task.Id,
-                Title = task.Title,
-                Description = task.Description,
-                Status = task.Status,
-                Priority = task.Priority,
-                DueDate = task.DueDate
-            });
-        }   
+            return result == null ? NotFound() : Ok(result);
+        }
         [HttpPost]
         public async Task<IActionResult> Create(CreateTaskDTO model)
         {
-            var task = new TaskItem
-            {
-                Title = model.Title,
-                Description = model.Description,
-                Priority = model.Priority,
-                DueDate = model.DueDate,
-                Status = ToDoStatus.ToDo,
-                AppUserId = model.AppUserId
-
-            };
-            await _unitOfWork.Tasks.AddAsync(task);
-            await _unitOfWork.SaveChangesAsync();
-
-            return CreatedAtAction(nameof(GetById), new { id = task.Id }, null);
+            var id = await _taskService.CreateAsync(model);
+            return CreatedAtAction(nameof(GetById), new { id = id }, null);
         }
         [HttpPut]
-        public async Task<IActionResult> Update(int id,UpdateTaskDTO model)
+        public async Task<IActionResult> Update(int id, UpdateTaskDTO model)
         {
-            var task = await _unitOfWork.Tasks.GetByIdAsync(id);
-
-            if(task == null || task.IsDeleted)
-            {
-                return NotFound();
-            }
-
-            task.Title = model.Title;
-            task.Description = model.Description;
-            task.Status = model.Status;
-            task.Priority = model.Priority;
-            task.DueDate = model.DueDate;
-           
-            _unitOfWork.Tasks.Update(task);
-            await _unitOfWork.SaveChangesAsync();
-
-            return NoContent();
+           var result = await _taskService.UpdateAsync(id, model);
+            return result ? NoContent() : NotFound();
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id) 
         {   
-            var task = await _unitOfWork.Tasks.GetByIdAsync(id);
+            var result = await _taskService.DeleteAsync(id);
 
-
-            if(task == null || task.IsDeleted)
-            {
-                return NotFound();
-            }
-
-
-            task.IsDeleted = true;
-            _unitOfWork.Tasks.Update(task);
-            await _unitOfWork.SaveChangesAsync();
-
-
-            return NoContent();
+            return result ? NoContent() : NotFound();
         }
 
 
