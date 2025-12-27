@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaskManagement.Domain.Interfaces;
 using TaskManagement.Infrastructure.Data;
 using TaskManagent.Domain.Interfaces;
 
@@ -15,10 +16,14 @@ namespace TaskManagement.Infrastructure.Repositorys
         public UnitOfWork(AppDbContext context)
         {
             _context = context;
+
             Tasks = new TaskRepository(_context);
+
+            RefreshTokens = new RefreshTokenRepository(_context);
         }
 
         public ITaskRepository Tasks { get; }
+        public IRefreshTokenRepository RefreshTokens { get; }
 
         public async Task<int> SaveChangesAsync()
         {

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskManagement.Application.Interfaces;
 using TaskManagement.Application.Services;
+using TaskManagement.Domain.Interfaces;
 
 namespace TaskManagement.Application.IoC
 {
@@ -14,6 +15,8 @@ namespace TaskManagement.Application.IoC
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddScoped<ITaskService, TaskService>();
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IJwtService, JwtService>();
 
             services.AddAutoMapper(
                 cfg => { },

@@ -8,10 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="16.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.15.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TaskManagent.Domain\TaskManagent.Domain.csproj" />
+    <ProjectReference Include="..\TaskManagement.Domain\TaskManagement.Domain.csproj" />
   </ItemGroup>
+
 
 </Project>

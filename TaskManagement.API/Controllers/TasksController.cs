@@ -7,9 +7,11 @@ using TaskManagement.Application.DTOs.Tasks;
 using TaskManagent.Domain.Enums;
 using TaskManagent.Domain.Entities.Concrete;
 using TaskManagement.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TaskManagement.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TasksController : ControllerBase

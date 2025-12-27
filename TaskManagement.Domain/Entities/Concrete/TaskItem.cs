@@ -17,7 +17,7 @@ namespace TaskManagent.Domain.Entities.Concrete
         public DateTime? DueDate { get; set; }
 
 
-        // Navigation property
+        // Navigation 
 
         public int AppUserId { get; set; }
         public AppUser AppUser { get; set; }= null!;
