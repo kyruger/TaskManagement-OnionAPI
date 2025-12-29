@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,8 +7,8 @@ using TaskManagement.Domain.Entities.Concrete;
 
 namespace TaskManagement.Domain.Interfaces
 {
-    public interface ITaskRepository: IGenericRepository<TaskItem>
+    public interface IRefreshTokenHelper
     {
-        Task<IEnumerable<TaskItem>> GetTasksByUserIdAsync(int userId);
+        RefreshToken GenerateRefreshToken(int UserId);
     }
 }

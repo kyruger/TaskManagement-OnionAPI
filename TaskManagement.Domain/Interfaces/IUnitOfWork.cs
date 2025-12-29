@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskManagement.Domain.Interfaces;
 
-namespace TaskManagent.Domain.Interfaces
+namespace TaskManagement.Domain.Interfaces
 {
     public interface IUnitOfWork
     {

@@ -8,7 +8,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using TaskManagement.Application.Interfaces;
-using TaskManagent.Domain.Entities.Concrete;
+using TaskManagement.Domain.Entities.Concrete;
 
 namespace TaskManagement.Application.Services
 {

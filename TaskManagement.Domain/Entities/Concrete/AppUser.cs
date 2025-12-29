@@ -5,9 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskManagement.Domain.Entities.Concrete;
-using TaskManagent.Domain.Entities.Abstract;
 
-namespace TaskManagent.Domain.Entities.Concrete
+namespace TaskManagement.Domain.Entities.Concrete
 {
     public class AppUser:IdentityUser<int>
     {

@@ -7,8 +7,10 @@ using TaskManagement.Domain.Entities.Concrete;
 
 namespace TaskManagement.Domain.Interfaces
 {
-    public interface IRefreshTokenRepository
+    public interface IRefreshTokenRepository: IGenericRepository<RefreshToken>
     {
         Task<RefreshToken?> GetValidTokenWithUserAsync(string token);
+
+        Task RevokeAllUserTokens(int UserId);
     }
 }

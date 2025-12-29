@@ -10,9 +10,9 @@ namespace TaskManagement.Application.Interfaces
     public interface IAuthService
     {
         Task<bool> RegisterAsync(RegisterDTO model);
-        Task<string?> LoginAsync(LoginDTO model);   
+        Task<TokenResponseDTO> LogInAsync(LoginDTO model);   
 
-        Task<string> RefreshAccessTokenAsync(string refreshToken);
+        Task<TokenResponseDTO> RefreshAccessTokenAsync(string refreshToken);
 
     }
 }

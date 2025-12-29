@@ -22,9 +22,21 @@ namespace TaskManagement.Infrastructure.Repositorys
             return await _context.RefreshTokens
         .Include(rt => rt.AppUser)
         .FirstOrDefaultAsync(rt =>
-            rt.Token == token &&
-            !rt.IsRevoked &&
-            rt.Expires > DateTime.UtcNow);
+            rt.Token == token);
+        }
+
+        public async Task RevokeAllUserTokens(int UserId)
+        {
+            var tokens = await _context.RefreshTokens
+                .Where(rt => rt.AppUserId == UserId && !rt.IsRevoked)
+                .ToListAsync();
+
+            foreach (var token in tokens)
+            {
+                token.IsRevoked = true;
+                token.RevokedAt = DateTime.UtcNow;
+            }
+
         }
     }
 }

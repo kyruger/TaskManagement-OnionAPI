@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TaskManagement.Infrastructure.Repositorys;
-using TaskManagent.Domain.Interfaces;
+using TaskManagement.Domain.Interfaces;
 using TaskManagement.Application.DTOs.Tasks;
 
-using TaskManagent.Domain.Enums;
-using TaskManagent.Domain.Entities.Concrete;
+using TaskManagement.Domain.Enums;
+using TaskManagement.Domain.Entities.Concrete;
 using TaskManagement.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 

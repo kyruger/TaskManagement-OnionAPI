@@ -5,8 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskManagement.Application.DTOs.Tasks;
-using TaskManagent.Domain.Entities.Concrete;
-using TaskManagent.Domain.Enums;
+using TaskManagement.Domain.Entities.Concrete;
+using TaskManagement.Domain.Enums;
 
 namespace TaskManagement.Application.AutoMapper
 {

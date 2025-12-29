@@ -7,8 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskManagement.Infrastructure.Data;
 using TaskManagement.Infrastructure.Repositorys;
-using TaskManagent.Domain.Entities.Concrete;
-using TaskManagent.Domain.Interfaces;
+using TaskManagement.Domain.Entities.Concrete;
+using TaskManagement.Domain.Interfaces;
+using TaskManagement.Infrastructure.Helpers;
 
 namespace TaskManagement.Infrastructure.IoC
 {
@@ -17,6 +18,7 @@ namespace TaskManagement.Infrastructure.IoC
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IRefreshTokenHelper, RefreshTokenHelper>();
 
             services.AddIdentityCore<AppUser>(options =>
             {

@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskManagement.Application.DTOs.Tasks;
 using TaskManagement.Application.Interfaces;
-using TaskManagent.Domain.Entities.Concrete;
-using TaskManagent.Domain.Enums;
-using TaskManagent.Domain.Interfaces;
+using TaskManagement.Domain.Entities.Concrete;
+using TaskManagement.Domain.Enums;
+using TaskManagement.Domain.Interfaces;
 
 namespace TaskManagement.Application.Services
 {

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskManagent.Domain.Entities.Abstract;
-using TaskManagent.Domain.Enums;
+using TaskManagement.Domain.Entities.Abstract;
+using TaskManagement.Domain.Enums;
 
-namespace TaskManagent.Domain.Entities.Concrete
+namespace TaskManagement.Domain.Entities.Concrete
 {
     public class TaskItem: BaseEntity
     {

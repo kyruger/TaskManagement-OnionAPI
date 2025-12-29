@@ -3,7 +3,7 @@ using TaskManagement.Application.Interfaces;
 using TaskManagement.Application.Services;
 using TaskManagement.Infrastructure.Data;
 using TaskManagement.Infrastructure.Repositorys;
-using TaskManagent.Domain.Interfaces;
+using TaskManagement.Domain.Interfaces;
 using TaskManagement.Infrastructure.IoC;
 using TaskManagement.Application.IoC;
 using Microsoft.AspNetCore.Authentication.JwtBearer;

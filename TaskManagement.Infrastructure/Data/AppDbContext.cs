@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskManagement.Domain.Entities.Concrete;
 using TaskManagement.Infrastructure.EntityTypeConfiguration;
-using TaskManagent.Domain.Entities.Concrete;
 
 namespace TaskManagement.Infrastructure.Data
 {
